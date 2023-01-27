@@ -1,0 +1,7 @@
+.profile__username {
+    margin: 0;
+    grid-area: username;
+    font-size: 42px;
+    line-height: 1.14;
+    font-weight: 500;
+}

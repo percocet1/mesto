@@ -1,0 +1,7 @@
+.profile__undertitle {
+    grid-area: undertitle;
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.21;
+    font-weight: 400;
+}
