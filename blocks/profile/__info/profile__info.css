@@ -7,3 +7,14 @@
     align-self: center;    
     margin-left: 30px;
 }
+
+@media screen and (max-width: 320px) {
+    .profile__info {
+        grid-template-areas:
+        'username edit'
+        'undertitle undertitle';
+        margin-left: 0;
+        margin-top: 22px;
+        gap: 14px;
+    }
+}

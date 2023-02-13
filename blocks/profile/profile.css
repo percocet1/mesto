@@ -1,7 +1,5 @@
 .profile {
     display: flex;
-    max-height: 120px;
-    height: 100%;
     margin-top: 40px;
     flex-direction: row;
     justify-content: space-between;

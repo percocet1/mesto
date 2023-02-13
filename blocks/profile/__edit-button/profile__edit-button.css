@@ -1,4 +1,20 @@
 .profile__edit-button {
     grid-area: edit;
     align-self: end;
+    border: 1px solid #fff;
+    background-image: url(../../../images/editButtonDesktop.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+}
+
+@media screen and (max-width: 320px) {
+    .profile__edit-button {
+        background-image: url(../../../images/editButtonMobile.svg);
+        padding: 0;
+        width: 18px;
+        height: 18px;
+        margin-bottom: 6px;
+    }
 }

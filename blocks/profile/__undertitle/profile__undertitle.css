@@ -5,3 +5,10 @@
     line-height: 1.21;
     font-weight: 400;
 }
+
+@media screen and (max-width: 320px) {
+    .profile__undertitle {
+        font-size: 14px;
+        justify-self: center;
+    }
+}
