@@ -24,4 +24,3 @@ profileEditButton.addEventListener('click', function(e){
 closePopup.addEventListener('click', () => {
     popup.classList.remove('popup_opened');
 })
-
