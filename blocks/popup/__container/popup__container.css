@@ -1,4 +1,4 @@
-.popup__content {
+.popup__container {
     display: flex;
     position: relative;
     background-color: #fff;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 320px) {
-    .popup__content {
+    .popup__container {
         max-width: 282px;
         margin-top: 123px;
     }

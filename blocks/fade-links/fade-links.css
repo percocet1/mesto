@@ -1,5 +1,0 @@
-.fade-links:hover {
-    transition: opacity .5s ease;
-    opacity: 0.5;
-    cursor: pointer;
-}

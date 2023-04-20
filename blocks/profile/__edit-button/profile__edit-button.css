@@ -9,6 +9,10 @@
     height: 24px;
 }
 
+.profile__edit-button:hover {
+    opacity: .6;
+}
+
 @media screen and (max-width: 320px) {
     .profile__edit-button {
         background-image: url(../../../images/editButtonMobile.svg);

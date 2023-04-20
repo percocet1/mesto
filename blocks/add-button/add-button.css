@@ -1,11 +1,17 @@
 .add-button {
-    border: 1px solid white;
+    border: 2px solid white;
+    border-radius: 2px;
+    margin-left: 10px;
     max-width: 150px;
     width: 100%;
     height: 50px;
     background-image: url(../../images/addPlusButtonDesktop.svg);
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.add-button:hover {
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 320px) {
