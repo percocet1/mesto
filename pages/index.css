@@ -12,7 +12,7 @@
 @import url(../blocks/profile/__username/profile__username.css);
 @import url(../blocks/profile/__undertitle/profile__undertitle.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
-@import url(../blocks/add-button/add-button.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__image/element__image.css);
@@ -31,6 +31,3 @@
 @import url(../blocks/popup/__form-item/popup__form-item.css);
 @import url(../blocks/popup/__button-submit/popup__button-submit.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
-*{
-    outline: red 1px solid;;
-}

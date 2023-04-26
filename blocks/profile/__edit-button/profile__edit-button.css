@@ -13,7 +13,7 @@
     opacity: .6;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 440px) {
     .profile__edit-button {
         background-image: url(../../../images/editButtonMobile.svg);
         padding: 0;

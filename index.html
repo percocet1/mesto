@@ -17,53 +17,53 @@
             <img class="profile__avatar" src="images/profileImg.jpg" alt="аватар">
             <div class="profile__info">
               <button class="profile__edit-button button-stock" type="button"></button>
-              <h1 class="profile__username">Жак-ив Кусто</h1>
+              <h1 class="profile__username">Жак-Ив Кусто</h1>
               <p class="profile__undertitle">Исследователь океана</p>
             </div>
           </div>
-          <button class="add-button button-stock" type="button"></button>
+          <button class="profile__add-button button-stock" type="button"></button>
         </section>
         <section class="elements">
           <div class="element">
             <img class="element__image" src="images/karachaevsk.png" alt="Карачаевск">
             <div class="element__info">
               <h2 class="element__title">Карачаевск</h2>
-              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg"></button>
+              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg" alt="нравится"></button>
             </div>
           </div>
           <div class="element">
             <img class="element__image" src="images/Elbrus.png" alt="Эльбрус">
             <div class="element__info">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg"></button>
+              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg" alt="нравится"></button>
             </div>
           </div>
           <div class="element">
             <img class="element__image" src="images/Dombai.png" alt="Домбай">
             <div class="element__info">
               <h2 class="element__title">Домбай</h2>
-              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg"></button>
+              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg" alt="нравится"></button>
             </div>
           </div>
           <div class="element">
             <img class="element__image" src="images/Elbrus.png" alt="Эльбрус">
             <div class="element__info">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg"></button>
+              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg" alt="нравится"></button>
             </div>
           </div>
           <div class="element">
             <img class="element__image" src="images/Dombai.png" alt="Домбай">
             <div class="element__info">
               <h2 class="element__title">Домбай</h2>
-              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg"></button>
+              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg" alt="нравится"></button>
             </div>
           </div>
           <div class="element">
             <img class="element__image" src="images/karachaevsk.png" alt="Карачаевск">
             <div class="element__info">
               <h2 class="element__title">Карачаево-Черкесия</h2>
-              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg"></button>
+              <button class="element__button-like button-stock" type="button"><img src="images/likeButton.svg" alt="нравится"></button>
             </div>
           </div>
         </section>
@@ -76,8 +76,8 @@
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__edit-profile-form" name="edit-form">
             <fieldset class="popup__input-container-form">
-              <input class="popup__form-item popup__form-item-name" name="username" type="text" value="" maxlength="20" placeholder="Имя" required>
-              <input class="popup__form-item popup__form-item-job" name="user-job" type="text" value="" maxlength="35" placeholder="Профессия" required>
+              <input class="popup__form-item" id="name" name="username" type="text" value="" maxlength="20" placeholder="Имя" required>
+              <input class="popup__form-item" id="job" name="user-job" type="text" value="" maxlength="35" placeholder="Профессия" required>
               <button class="popup__button-submit" type="submit">Сохранить</button>
             </fieldset>
           </form>
