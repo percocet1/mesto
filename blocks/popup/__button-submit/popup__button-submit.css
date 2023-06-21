@@ -7,7 +7,10 @@
     font-weight: 400;
     background-color: #000;
     color: #fff;
-    padding: 14px 124px 18px 125px;
+    max-width: 358px;
+    width: 100%;
+    text-align: center;
+    padding: 14px 0;
     border-radius: 2px;
 }
 

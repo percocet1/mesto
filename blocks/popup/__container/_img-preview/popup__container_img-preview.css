@@ -1,0 +1,8 @@
+.popup__container_img-preview{
+    position: relative;
+    background: transparent;
+    width: auto;
+    padding: 0px;
+    max-width: 75vw;
+    height: auto;
+}
