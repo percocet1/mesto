@@ -1,56 +1,60 @@
 //Popup для  Редактирования профиля
-let editPopup = document.getElementById('profile-popup')
-let profileEditButton = document.querySelector('.profile__edit-button')
-let editForm = document.getElementById('edit-form')
-let username = document.querySelector('.profile__username')
-let undertitle = document.querySelector('.profile__undertitle')
-let nameInput = document.getElementById('name')
-let jobInput =  document.getElementById('job')
+const editPopup = document.getElementById('profile-popup')
+const profileEditButton = document.querySelector('.profile__edit-button')
+const editForm = document.getElementById('edit-form')
+const username = document.querySelector('.profile__username')
+const undertitle = document.querySelector('.profile__undertitle')
+const nameInput = document.getElementById('name')
+const jobInput =  document.getElementById('job')
 //Закрытие попапов
-let buttonClose = document.querySelector('.popup__close-button')
-let popup = document.querySelectorAll('.popup')
+let popups = document.querySelectorAll('.popup')
 //Popup для открытия изображения
-let popupImage = document.getElementById('image-popup')
-let elementImg = document.querySelector('.popup__image')
-let elementTitle = document.querySelector('.popup__undertitle')
+const popupImage = document.getElementById('image-popup')
+const elementImg = document.querySelector('.popup__image')
+const elementTitle = document.querySelector('.popup__undertitle')
 //Popup для добавления карточек
-let addPopup = document.getElementById('add-popup')
-let addPlaceButton = document.querySelector('.profile__add-button')
-let addForm = document.getElementById('add-form')
-let placeInput = document.getElementById('place')
-let placeLinkInput = document.getElementById('place-link')
+const addPopup = document.getElementById('add-popup')
+const addPlaceButton = document.querySelector('.profile__add-button')
+const addForm = document.getElementById('add-form')
+const placeInput = document.getElementById('place')
+const placeLinkInput = document.getElementById('place-link')
 //закрытие Popup
-let closePopupButton = document.querySelectorAll('.popup__close-button')
-let closePopupOverlay
-//Template card add
-let cardTemplate = document.querySelector('.card-template').content;
-let deleteCardButton = cardTemplate.querySelector('.element__delete-button')
-let elementsContainer = document.querySelector('.elements')
+const closePopupButtons = document.querySelectorAll('.popup__close-button')
+//T\emplate card add
+const cardTemplate = document.querySelector('.card-template').content;
+const deleteCardButton = cardTemplate.querySelector('.element__delete-button')
+const elementsContainer = document.querySelector('.elements')
 // Начальный массив карточек
 const initialCards = [
     {
       name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+      alt: 'Архыз'
     },
     {
       name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+      alt: 'Челябинская область'
     },
     {
       name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+      alt: 'Иваново'
     },
     {
       name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+      alt: 'Камчатка'
     },
     {
       name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+      alt: 'Холмогорский район'
     },
     {
       name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+      alt: 'Байкал'
     }
   ]; 
 //Открытие попапа для редактирования профиля
@@ -63,15 +67,26 @@ profileEditButton.addEventListener('click', function(e){
   nameInput.value = username.textContent
   jobInput.value = undertitle.textContent
 })
+//функция закрытия
+function closePopup(popups){
+  popups.classList.remove('popup_opened');
+}
+
+closePopupButtons.forEach((closeElement) => {
+  closeElement.addEventListener('click', (evt) => {
+    popups = evt.target.closest('.popup');
+    closePopup(popups);
+  })
+})
 //подтверждение формы редактирования и слушатель
-function handleFormSubmit (evt) {
+function editProfileFormSubmit (evt) {
   evt.preventDefault();
   username.textContent = nameInput.value;
   undertitle.textContent = jobInput.value;
-  closePopup();
+  closePopup(editPopup);
 }
 
-editForm.addEventListener('submit', handleFormSubmit)
+editForm.addEventListener('submit', editProfileFormSubmit)
 //Открытие попапа для добавления карточки/добавление карточки
 addPlaceButton.addEventListener('click', ()=>{
   openPopup(addPopup)
@@ -90,17 +105,6 @@ function addCard(evt){
   closePopup(addPopup);
 }
 addForm.addEventListener('submit', addCard)
-//функция закрытия
-function closePopup(popup){
-  popup.classList.remove('popup_opened');
-}
-
-closePopupButton.forEach((closeElement) => {
-  closeElement.addEventListener('click', (evt) => {
-    popup = evt.target.closest('.popup');
-    closePopup(popup);
-  })
-})
 //Кнопка лайка
 function likeCard(button){
   button.addEventListener('click', (evt)=>{
@@ -118,18 +122,20 @@ function openImage(cardPhoto){
   cardPhoto.addEventListener('click', (evt)=>{
     openPopup(popupImage);
     elementImg.src = cardPhoto.src;
+    elementImg.alt = cardPhoto.alt;
     elementTitle.textContent = evt.target.closest('.element').textContent;
   })
 }
 
 function createCard(cardInfo){
-    let cardElement = cardTemplate.cloneNode(true);
-    let cardElementTitle = cardElement.querySelector('.element__title');                   
-    let cardElementImage = cardElement.querySelector('.element__image');
-    let cardElementLike = cardElement.querySelector('.element__button-like');              
-    let cardElementDel = cardElement.querySelector('.element__delete-button');
+    const cardElement = cardTemplate.cloneNode(true);
+    const cardElementTitle = cardElement.querySelector('.element__title');                   
+    const cardElementImage = cardElement.querySelector('.element__image');
+    const cardElementLike = cardElement.querySelector('.element__button-like');              
+    const cardElementDel = cardElement.querySelector('.element__delete-button');
     cardElementTitle.textContent = cardInfo.name;
     cardElementImage.src = cardInfo.link;
+    cardElementImage.alt = cardInfo.alt;   
     console.log(cardElementDel)
     deleteCard(cardElementDel);
     likeCard(cardElementLike);
