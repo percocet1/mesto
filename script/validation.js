@@ -19,7 +19,7 @@ function toggleButtonSubmit(form, validationConfig) {
   const isFormValid = form.checkValidity();
 
   buttonSubmint.disabled = !isFormValid;
-  buttonSubmint.classList.toggle('popup__button-submit_disabled', !isFormValid);
+  buttonSubmint.classList.toggle(validationConfig.inactiveButtonClass, !isFormValid);
 }
 
 //слушатель всех инпутов
