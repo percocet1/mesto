@@ -24,6 +24,12 @@ const closePopupButtons = document.querySelectorAll('.popup__close-button')
 const cardTemplate = document.querySelector('.card-template').content;
 const deleteCardButton = cardTemplate.querySelector('.element__delete-button')
 const elementsContainer = document.querySelector('.elements')
+const objectValidation = {
+  submitButtonSelector: '.popup__button-submit',
+  inactiveButtonClass: 'popup__button-submit_disabled',
+  inputSelector: '.popup__input',
+  inputErrorClass: 'popup__input_error',
+}
 // Начальный массив карточек
 const initialCards = [
     {
@@ -60,6 +66,7 @@ const initialCards = [
 //Открытие попапа для редактирования профиля
 function openPopup(popup){
   popup.classList.add('popup_opened')
+  document.addEventListener('keydown', closePopupOnEsc); //
 }
 
 profileEditButton.addEventListener('click', function(e){
@@ -67,9 +74,17 @@ profileEditButton.addEventListener('click', function(e){
   nameInput.value = username.textContent
   jobInput.value = undertitle.textContent
 })
-//функция закрытия
+//функция закрытия esc/overlay/clickOnCloseButton
+function closePopupOnEsc(evt){
+  if (evt.key === 'Escape') {
+    const popupClose = document.querySelector('.popup_opened');
+    closePopup(popupClose);
+  };
+};
+
 function closePopup(popups){
   popups.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupOnEsc);
 }
 
 closePopupButtons.forEach((closeElement) => {
@@ -78,6 +93,19 @@ closePopupButtons.forEach((closeElement) => {
     closePopup(popups);
   })
 })
+// закрытие по клику на оверлей
+function popupAddClosest(evt){
+  return evt.target.closest('.popup');
+};
+popups.forEach((closeElement) => {
+  closeElement.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
+      const closePopupClickonOverlay = popupAddClosest(evt);
+      closePopup(closePopupClickonOverlay);
+    };
+  });
+});
+
 //подтверждение формы редактирования и слушатель
 function editProfileFormSubmit (evt) {
   evt.preventDefault();
@@ -146,3 +174,29 @@ function createCard(cardInfo){
 initialCards.forEach((cardInfo) => {
     elementsContainer.append(createCard(cardInfo));
 });
+
+//сброс общих стилей
+function resetValidationStyle (objectValidation)  {
+  disableSubmitInput(objectValidation);
+  disableSubmitButton(objectValidation);
+};
+
+//Валидация инпутов
+function disableSubmitInput(objectValidation) {
+  const inputList = document.querySelectorAll(objectValidation.inputSelector);
+
+  inputList.forEach((input) => {
+    input.classList.remove(objectValidation.inputErrorClass);
+    input.nextElementSibling.textContent = '';
+  });
+}
+
+/** Функция валидации кнопки Submit */
+function disableSubmitButton(objectValidation) {
+  const buttonSubmint = document.querySelectorAll(objectValidation.submitButtonSelector);
+
+  buttonSubmint.forEach((button) => {
+    button.classList.add(objectValidation.inactiveButtonClass);
+    button.setAttribute('disabled', '');
+  });
+}
