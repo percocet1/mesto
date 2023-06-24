@@ -131,6 +131,7 @@ function addCard(evt){
   });
   evt.target.reset();
   closePopup(addPopup);
+  disableSubmitButton(objectValidation)//Выключение сабмита после добавления карточки
 }
 addForm.addEventListener('submit', addCard)
 //Кнопка лайка
@@ -191,7 +192,7 @@ function disableSubmitInput(objectValidation) {
   });
 }
 
-/** Функция валидации кнопки Submit */
+//валидация сабмита
 function disableSubmitButton(objectValidation) {
   const buttonSubmint = document.querySelectorAll(objectValidation.submitButtonSelector);
 

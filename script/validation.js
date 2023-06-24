@@ -1,15 +1,4 @@
-//Объект валидации
-const formValidationConfig = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button-submit',
-    inactiveButtonClass: 'popup__button-submit_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-  }
-  
-  
-//Вывод ошибки валидации
+  //Вывод ошибки валидации
 function showInputError(evt, validationConfig) {
   const input = evt.target;
   const inputId = input.id;
@@ -61,4 +50,11 @@ function enableValidation(validationConfig) {
 }  
 
 //Включение валидации
-enableValidation(formValidationConfig);
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-submit',
+  inactiveButtonClass: 'popup__button-submit_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+});
