@@ -1,5 +1,6 @@
-import { FormValidator, validationConfig } from "./FormValidator.js"
-import { Card, initialCards } from "./Card.js"
+import { initialCards, validationConfig } from "./constants.js"
+import { FormValidator} from "./FormValidator.js"
+import { Card } from "./Card.js"
 //Popup для  Редактирования профиля
 const editPopup = document.getElementById('profile-popup')
 const profileEditButton = document.querySelector('.profile__edit-button')
@@ -9,7 +10,7 @@ const undertitle = document.querySelector('.profile__undertitle')
 const nameInput = document.getElementById('name')
 const jobInput =  document.getElementById('job')
 //Закрытие попапов
-let popups = document.querySelectorAll('.popup')
+const popup = document.querySelectorAll('.popup')
 //Popup для открытия изображения
 const popupImage = document.getElementById('image-popup')
 const elementImg = document.querySelector('.popup__image')
@@ -51,24 +52,25 @@ function closePopup(popups){
 
 closePopupButtons.forEach((closeElement) => {
   closeElement.addEventListener('click', (evt) => {
-    popups = evt.target.closest('.popup');
-    closePopup(popups);
+    const popup = getClosestEventPopup(evt);
+    closePopup(popup);
   })
 })
-// закрытие по клику на оверлей
-function popupAddClosest(evt){
-  return evt.target.closest('.popup');
-};
-popups.forEach((closeElement) => {
+// Ф-ция возвращения событий
+const getClosestEventPopup = (evt) =>{
+  return evt.target.closest('.popup')
+}
+// Ф-ция закрытия попапа кликом на оверлей
+popup.forEach((closeElement) => {
   closeElement.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
-      const closePopupClickonOverlay = popupAddClosest(evt);
+      const closePopupClickonOverlay = getClosestEventPopup(evt);
       closePopup(closePopupClickonOverlay);
     };
   });
 });
 
-//подтверждение формы редактирования и слушатель
+// Ф-ция подтверждение формы редактирования и слушатель
 function editProfileFormSubmit (evt) {
   evt.preventDefault();
   username.textContent = nameInput.value;
@@ -77,7 +79,7 @@ function editProfileFormSubmit (evt) {
 }
 
 editForm.addEventListener('submit', editProfileFormSubmit)
-//Открытие попапа для добавления карточки/добавление карточки
+// Слушатель открытия попапа для добавления карточки/добавление карточки
 addPlaceButton.addEventListener('click', ()=>{
   openPopup(addPopup)
 })
@@ -94,7 +96,6 @@ function addCard(evt){
   });
   evt.target.reset();
   closePopup(addPopup);
-  disableSubmitButton(objectValidation)//Выключение сабмита после добавления карточки
 }
 addForm.addEventListener('submit', addCard)
 
@@ -104,6 +105,7 @@ function openImage(cardPhoto){
     elementImg.alt = cardPhoto.alt;
     elementTitle.textContent = cardPhoto.name
 }
+
 
 function createCard(cardData){
   const card = new Card(cardData, '.card-template', openImage)

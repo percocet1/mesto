@@ -1,24 +1,13 @@
-
- const validationConfig = ({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-submit',
-  submitInactiveClass: 'popup__button-submit_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-});
-
  class FormValidator {
-  constructor(config, form){
-    this._formSelector = config.formSelector;
+  constructor(config, formSelector){
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._submitInactiveClass = config.submitInactiveClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
 
-    this._form = form;
-    this._formElement = document.querySelector(this._form)
+    this._formSelector = formSelector;
+    this._formElement = document.querySelector(this._formSelector)
     this._buttonSubmit = this._formElement.querySelector(this._submitButtonSelector)
     this._inputList = this._formElement.querySelectorAll(this._inputSelector);
   }
@@ -73,4 +62,4 @@
   };
 
 }
-export { FormValidator, validationConfig }
+export { FormValidator }
