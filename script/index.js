@@ -11,7 +11,10 @@ const nameInput = document.getElementById('name')
 const jobInput =  document.getElementById('job')
 //Закрытие попапов
 const popup = document.querySelectorAll('.popup')
-//Popup для открытия изображения
+// Формы
+const popupFormPlace = document.getElementById("add-form")
+const popupFormProfile = document.getElementById('edit-form')
+// Popup для открытия изображения
 const popupImage = document.getElementById('image-popup')
 const elementImg = document.querySelector('.popup__image')
 const elementTitle = document.querySelector('.popup__undertitle')
@@ -26,6 +29,13 @@ const closePopupButtons = document.querySelectorAll('.popup__close-button')
 //Контейнер карточек
 const elementsContainer = document.querySelector('.elements')
 
+// Включение валидации форм
+const profileValidationForm = new FormValidator(validationConfig, popupFormProfile);
+profileValidationForm.enableValidation();
+
+const placeValidationForm = new FormValidator(validationConfig, popupFormPlace);
+placeValidationForm.enableValidation();
+
 //Открытие попапа для редактирования профиля
 function openPopup(popup){
   popup.classList.add('popup_opened')
@@ -36,6 +46,7 @@ profileEditButton.addEventListener('click', function(e){
   openPopup(editPopup)
   nameInput.value = username.textContent
   jobInput.value = undertitle.textContent
+  profileValidationForm.clearValidationForm()
 })
 //функция закрытия esc/overlay/clickOnCloseButton
 function closePopupOnEsc(evt){
@@ -73,15 +84,17 @@ popup.forEach((closeElement) => {
 // Ф-ция подтверждение формы редактирования и слушатель
 function editProfileFormSubmit (evt) {
   evt.preventDefault();
+  profileValidationForm.clearValidationForm()
   username.textContent = nameInput.value;
   undertitle.textContent = jobInput.value;
   closePopup(editPopup);
+
 }
 
 editForm.addEventListener('submit', editProfileFormSubmit)
 // Слушатель открытия попапа для добавления карточки/добавление карточки
 addPlaceButton.addEventListener('click', ()=>{
-  openPopup(addPopup)
+  openPopup(addPopup);
 })
 
 function renderCard(card){
@@ -96,6 +109,7 @@ function addCard(evt){
   });
   evt.target.reset();
   closePopup(addPopup);
+  placeValidationForm.clearValidationForm();
 }
 addForm.addEventListener('submit', addCard)
 
@@ -116,10 +130,3 @@ function createCard(cardData){
 initialCards.forEach((cardData) => {
     elementsContainer.append(createCard(cardData));
 });
-
-//сброс общих стилей
-const profileValidationForm = new FormValidator(validationConfig, '#edit-form');
-profileValidationForm.enableValidation();
-
-const placeValidationForm = new FormValidator(validationConfig, '#add-form');
-placeValidationForm.enableValidation();
