@@ -1,0 +1,18 @@
+.profile__undertitle {
+    grid-area: undertitle;
+    margin: 0;
+    font-size: 18px;
+    max-width: 300px;
+    line-height: 1.21;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 440px) {
+    .profile__undertitle {
+        margin-left: 20px;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,11 @@
+.popup__container_img-preview{
+    box-shadow: none;
+    border-radius: 0;
+    color: white;
+    position: relative;
+    background: transparent;
+    width: auto;
+    padding: 0px;
+    max-width: 75vw;
+    height: auto;
+}
