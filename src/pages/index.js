@@ -70,6 +70,7 @@ const addCard = (cardObject) => {
         })
         .catch((err) => { console.log(`При дизлайке карточки возникла ошибка,s ${err}`) })
     },
+    
   });
   return createNewCard.createCard();
 }
