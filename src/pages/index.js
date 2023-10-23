@@ -38,7 +38,7 @@ Promise.all([ api.getUserData(), api.getInitialCards() ])
       username: userProfileData.name, 
       userjob: userProfileData.about 
     });
-    elementsContainer.renderedItems(cardObject.reverse());
+    elementsContainer.renderedItems(cardObject);
     userInfo.setUserAvatar(userProfileData.avatar);
   })
   .catch((err) => { console.log(`Возникла глобальная ошибка, ${err}`) })
@@ -68,7 +68,7 @@ const addCard = (cardObject) => {
         .then((res) => {
           createNewCard.renderCardLike(res);
         })
-        .catch((err) => { console.log(`При дизлайке карточки возникла ошибка, ${err}`) })
+        .catch((err) => { console.log(`При дизлайке карточки возникла ошибка,s ${err}`) })
     },
   });
   return createNewCard.createCard();
@@ -137,7 +137,7 @@ const popupFormPlace = new PopupWithForm('#add-popup', {
       link: formValues.placelink
       })
       .then((card) => {
-        elementsContainer.addItem(addCard(card));
+        elementsContainer.prependItem(addCard(card));
         popupFormPlace.close();
       })
       .catch((err) => { console.log(`При добавлении новой карточки возникла ошибка, ${err}`) })

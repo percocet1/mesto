@@ -83,20 +83,21 @@ export default class Card {
     _addLike(){
         if (this._checkLike()) {
           this._handleCardDeleteLike(this._cardId);
+          
         } else {
           this._handleCardLike(this._cardId);
         }
       }
       
-    _toggleLike(){
-      this._cardElementLike.classList.toggle('element__button-like_active')
-    }  
-
     _setEventListeners(){
       this._cardElementLike.addEventListener('click', () => {
         this._addLike()
-        this._toggleLike()
       })
-      this._cardElementImage.addEventListener('click', () => this._handleCardZoom(this._cardName, this._cardImage));
+      this._cardElementImage.addEventListener('click', () => {
+        this._handleCardZoom(this._cardName, this._cardImage)
+      })
+      this._cardElementDelete.addEventListener('click', ()=> {
+        this._handleCardDelete(this, this._cardId)
+      })
     }
 }
