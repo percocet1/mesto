@@ -85,8 +85,6 @@ export default class Api {
         headers: this._headers,
         method: 'DELETE',
       })
-      .then((res) => {return res.json()})
-      .then((res) => {console.log(res)})
         .then((res) => { return this._checkServerResponse(res); })
     }
   }
